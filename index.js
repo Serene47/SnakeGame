@@ -5,7 +5,7 @@ let verticalBoxes = 20;
 let boxSize = 30;
 
 let context;
-let snakePoints  = [], moves = [], food;
+let snakePoints, moves, food;
 
 let interval;
 
@@ -28,6 +28,10 @@ const start = () => {
     { h : 9 , v : 10}
   ]
 
+  moves = []
+
+  food = null;
+
   moves.push({
     dir : "up",
     start : 0,
@@ -38,17 +42,27 @@ const start = () => {
 
   updateCanvas();
 
+  startGameInterval();
+
+  document.body.addEventListener('keydown',handleKeyPress);
+
+}
+
+const startGameInterval = () => {
+
+  clearInterval(interval)
+
   interval = setInterval( 
     () => {
       
+      updateMoves();
+
       updateSnakePoints();
 
       updateCanvas();
 
-    },500
+    },350
   )
-
-  document.body.addEventListener('keydown',handleKeyPress);
 
 }
 
@@ -90,18 +104,8 @@ const handleKeyPress = (event) => {
   
       clearInterval(interval);
   
-      interval = setInterval( 
-        () => {
-  
-          updateMoves();
-  
-          updateSnakePoints();
-  
-          updateCanvas();
-  
-        },500
-      )
-
+      startGameInterval();
+      
     }
 
   }
@@ -128,7 +132,7 @@ const isOpposite = (dir) => {
 
 const updateMoves = () => {
   
-  moves.slice(1, moves.length).forEach(
+  moves.slice(1).forEach(
     (move) => {
 
       move.start++;
@@ -142,10 +146,6 @@ const updateMoves = () => {
   )
 
 }
-
-
-
-
 
 const getSnakeMoves = () => {
 
@@ -171,7 +171,7 @@ const getSnakeMoves = () => {
 
     }
   )
-  
+
   return snakeMoves;
 
 }
@@ -209,28 +209,42 @@ const updateSnakePoints = () => {
 
   }
 
-  //console.log("Snake points " ,  ...snakePoints);
+  if(isCrossedBoundaries() || doBiteItself()) {
+
+    clearInterval(interval);
+  
+    alert('Game over');
+
+    let doContinue = confirm(("You want to continue ?"));
+
+    if(doContinue) {
+      start();
+    }
+    
+  }
 
   if(doesContainFood()) {
     addSnakePoint();
   }
 
+  //console.log("Snake points " ,  ...snakePoints);
+
 }
 
 doesContainFood = () => {
 
-  let snakeFirstPoint = snakePoints[0]
+  let head = snakePoints[0]
 
-  return snakeFirstPoint.v == food.v && snakeFirstPoint.h == food.h;
+  return head.v == food.v && head.h == food.h;
 
 }
 
 addSnakePoint = () => {
 
-  let snakeLastPoint = snakePoints[snakePoints.length - 1];
+  let tail = snakePoints[snakePoints.length - 1];
   let lastMove = moves[moves.length - 1];
 
-  let newPoint = { ...snakeLastPoint};
+  let newPoint = { ...tail};
 
   switch(lastMove.dir) {
 
@@ -252,9 +266,9 @@ addSnakePoint = () => {
   snakePoints.push(newPoint);
 
   moves[0].end ++;
-  updateMoves();
+  //updateMoves();
 
-  updateSnakePoints();
+  //updateSnakePoints();
   
   updateCanvas();
 
@@ -320,8 +334,6 @@ const drawSnake = () => {
 
 const drawFood = () => {
 
-  console.log("Food", food)
-
   context.fillStyle = "#ff0";
   context.fillRect(food.h * boxSize,food.v * boxSize , boxSize, boxSize);
 
@@ -343,21 +355,41 @@ const clearFood =() => {
   }
 }
 
-createFood = () => {
+const createFood = () => {
 
   let vertical = Math.round(Math.random() * (verticalBoxes - 1));
   let horizondal = Math.round(Math.random() * (horizondalBoxes - 1));
 
-  let ifInsideSnake = snakePoints.some(
-    (point) => {
-      return point.v == vertical && point.h == horizondal;
-    }
-  )
-
-  if(!ifInsideSnake) 
+  if(!isInsideSnake(snakePoints,vertical,horizondal)) 
     food = {  h : horizondal , v : vertical};
   else
     createFood();
 
 }
 
+const isInsideSnake = (snakePoints,vertical,horizondal) => {
+
+  return snakePoints.some(
+    (point) => {
+      return point.v == vertical && point.h == horizondal;
+    }
+  )
+
+}
+
+const doBiteItself = () => {
+
+  let head = snakePoints[0];
+
+  return isInsideSnake(snakePoints.slice(1,snakePoints.length),head.v,head.h)
+
+}
+
+const isCrossedBoundaries = () => {
+
+  let head = snakePoints[0];
+
+  return head.v < 0 || head.v >= verticalBoxes 
+  || head.h < 0 || head.h >= horizondalBoxes;
+
+}
