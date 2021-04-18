@@ -7,6 +7,8 @@ let boxSize = 30;
 let context;
 let snakePoints, moves, food;
 
+let startButton,startContent,gameOverContent,gameContent,restartButton;
+
 let interval;
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -15,12 +17,26 @@ window.addEventListener("DOMContentLoaded", () => {
 
   context = gameCanvas.getContext('2d');
 
-  start();
+  startButton = document.getElementById("start-button");
+  restartButton = document.getElementById("restart-button");
+
+  startButton.addEventListener('click', start)
+  restartButton.addEventListener('click', start)
+
+  startContent = document.getElementById("start-content");
+  gameContent = document.getElementById("game-content");
+  gameOverContent = document.getElementById("game-over-content");
+
 
 })
 
 
 const start = () => {
+
+  startContent.classList.add("hidden");
+  gameOverContent.classList.add("hidden");
+
+  gameContent.classList.remove("hidden");
 
   snakePoints =[
     { h : 9 , v : 8},
@@ -213,13 +229,8 @@ const updateSnakePoints = () => {
 
     clearInterval(interval);
   
-    alert('Game over');
-
-    let doContinue = confirm(("You want to continue ?"));
-
-    if(doContinue) {
-      start();
-    }
+    gameOverContent.classList.remove("hidden");
+    gameContent.classList.add("hidden");
     
   }
 

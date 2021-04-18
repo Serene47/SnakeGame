@@ -9,11 +9,55 @@
 </head>
 <body>
 
-  <h1>Simple snake game</h1>
+  <main>
 
-  <div class="container">
-    <canvas width="600"  height="600" id="game-canvas"></canvas>
+    <div id="start-content" >
+
+      <span class="logo">🐍</span>
+
+      <h1>Snake game</h1>
+      
+      <p class="best score hidden" >Best </p>
+
+      <button id="start-button" class="button">START</button>
+  
+    </div>
+  
+    <div id="game-over-content" class="hidden" >
+  
+      <h2>Game over</h2>
+
+      <p class="curr-score score hidden" >Best </p>
+
+      <button id="restart-button" class="button">RESTART</button>
+
+    </div>
+  
+    <div id="game-content" class="hidden">
+  
+      <div class="panel">
+  
+        <div class="score-container">
+  
+          <p id="curr-score" class="score" >Your score </p>
+          <p id="best-score" class="score" >Best score</p>
+    
+        </div>
+  
+        <button type="button" class="info-button"></button>
+  
+      </div>
+  
+      <canvas width="600"  height="600" id="game-canvas"></canvas>
+  
+    </div>
+
+  </main>
+
+  <div id="info" class="hidden">
+
   </div>
+
   <script src="index.js"></script>
 </body>
 </html>
