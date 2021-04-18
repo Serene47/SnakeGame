@@ -1,0 +1,24 @@
+{
+  "name": "snakegame",
+  "version": "1.0.0",
+  "description": "A very simple snake game",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Serene47/SnakeGame.git"
+  },
+  "keywords": [
+    "game",
+    "snake-game",
+    "vanila-javascript",
+    "canvas"
+  ],
+  "author": "Serene Abraham Mathew",
+  "license": "UNLICENCED",
+  "bugs": {
+    "url": "https://github.com/Serene47/SnakeGame/issues"
+  },
+  "homepage": "https://github.com/Serene47/SnakeGame#readme"
+}

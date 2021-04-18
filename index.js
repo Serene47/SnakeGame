@@ -266,9 +266,6 @@ addSnakePoint = () => {
   snakePoints.push(newPoint);
 
   moves[0].end ++;
-  //updateMoves();
-
-  //updateSnakePoints();
   
   updateCanvas();
 
