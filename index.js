@@ -27,6 +27,7 @@ window.addEventListener("DOMContentLoaded", () => {
   gameContent = document.getElementById("game-content");
   gameOverContent = document.getElementById("game-over-content");
 
+  document.body.addEventListener('keydown',handleKeyPress);
 
 })
 

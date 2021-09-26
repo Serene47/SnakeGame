@@ -1,4 +1,9 @@
 
+:root {
+  --primary : #85C170;
+  --stroke : #555;
+}
+
 *,*::after,*::before {
   box-sizing: border-box;
   margin: 0;
@@ -6,22 +11,51 @@
 }
 
 body {
-  font-family: sans-serif;
+  font-family: 'Shojumaru', cursive;
+  line-height: 1.25;
 }
 
-.button {
-  padding: 8px 16px;
-  border: 2px solid #e4947c;
-  background-color: transparent;
-  color: #e4947c;
-  font-size: 20px;
+button {
+  font-family: 'Shojumaru', cursive;
+  line-height: 1.25;
   cursor: pointer;
+}
+
+/** utility classes */
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flat-button {
+  background-color: transparent;
+  border : none;
   outline: none;
+  padding: 4px;
   transition: transform 200ms;
 }
 
-.button:active {
+.flat-button:active {
   transform: scale(0.95);
+}
+
+.primary-button {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+}
+
+.primary-button  img{
+  width: 80px;
+  margin-bottom: 6px;
+}
+
+.score {
+  color: var(--stroke);
 }
 
 .hidden {
@@ -35,45 +69,46 @@ main {
   align-items: center;
 }
 
-.container {
-  text-align: center;
-}
-
-.score {
-  color: #555;
-}
-
 #start-content,#game-over-content {
   width: 90%;
   max-width: 600px;
   padding: 30px;
-  border: 2px solid #2fa828;
   text-align: center;
 }
 
-.logo {
-  display: inline-block;
-  font-size: 32px;
-  margin-bottom: 24px;
+#start-content .logo {
+  display: block;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 100px;
 }
 
-#start-content h1 {
-  color: #077301;
-  margin-bottom: 24px;
+#start-content .score {
+  margin-bottom: 50px;
 }
 
-#start-button {
-  margin: 24px 0;
+#game-over-content .logo {
+  display: block;
+  width: 40%;
+  max-width: 360px;
+  margin: auto;
+  margin-bottom: 50px;
 }
 
 #game-over-content h2 {
-  color: #077301;
-  margin-bottom: 24px;
+  color: var(--primary);
+  font-size: 64px;
+  margin-bottom: 50px;
+}
+
+#game-over-content .score {
+  margin-bottom: 36px;
 }
 
 #restart-button {
-  margin: 24px 0;
+  margin-top: 50px;
 }
+
 .score-container .score:nth-last-child(n+2){
   margin-bottom: 16px;
 }

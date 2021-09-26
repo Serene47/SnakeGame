@@ -4,8 +4,11 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shojumaru&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="index.css">
-  <title>Simple snake game</title>
+  <title>Snake 2021</title>
 </head>
 <body>
 
@@ -13,23 +16,30 @@
 
     <div id="start-content" >
 
-      <span class="logo">🐍</span>
-
-      <h1>Snake game</h1>
+      <img class="logo" src="/assets/images/snake2021-logo.svg" alt="Snake 2021">
       
-      <p class="best score hidden" >Best </p>
+      <p class="score" >Your best : <span id="best" > 200 </span></p>
 
-      <button id="start-button" class="button">START</button>
+      <button id="start-button" type="button" class="flat-button primary-button">
+        <img src="assets/images/play-circle.svg" alt="play">
+        <span>Play</span>
+      </button>
   
     </div>
   
     <div id="game-over-content" class="hidden" >
   
+      <img class="logo" src="/assets/images/snake2021-logo.svg" alt="Snake 2021">
+
       <h2>Game over</h2>
 
-      <p class="curr-score score hidden" >Best </p>
+      <p class="score" >Current score : <span id="curr-score"> 100 </span> </p>
+      <p class="score" >Best score : <span id="go-best-score"> 200 </span> </p>
 
-      <button id="restart-button" class="button">RESTART</button>
+      <button id="restart-button" type="button" class="flat-button primary-button">
+        <img src="assets/images/play-circle.svg" alt="play">
+        <span>Play again</span>
+      </button>
 
     </div>
   
