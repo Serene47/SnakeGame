@@ -289,25 +289,20 @@ addSnakePoint = () => {
 
 const drawGrid = () => {
 
-  context.beginPath();
+  context.fillStyle = '#ddd';
 
-  for(let i=0;i<horizondalBoxes;i++) {
+  for(let hdl=0;hdl<horizondalBoxes;hdl++) {
 
-    context.moveTo( i*boxSize, 0 );
-    context.lineTo(i*boxSize , boxSize * verticalBoxes);
+    for(let vtl=0;vtl<verticalBoxes;vtl++) {
+
+      // fill even columns in even rows and odd columns in odd rows
+      if( (hdl + vtl) % 2 == 0) 
+        context.fillRect(hdl * boxSize, vtl * boxSize, boxSize, boxSize);
+  
+  
+    }
 
   }
-
-  for(let i=0;i<verticalBoxes;i++) {
-
-    context.moveTo( 0 , i*boxSize);
-    context.lineTo(boxSize * verticalBoxes, i*boxSize);
-
-  }
-
-  context.strokeStyle = '#fff';
-  context.stroke();
-
 
 
 }

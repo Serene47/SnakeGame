@@ -20,7 +20,7 @@
       
       <p class="score" >Your best : <span id="best" > 200 </span></p>
 
-      <button id="start-button" type="button" class="flat-button primary-button">
+      <button id="start-button" type="button" class="flat-button game-button">
         <img src="assets/images/play-circle.svg" alt="play">
         <span>Play</span>
       </button>
@@ -33,10 +33,10 @@
 
       <h2>Game over</h2>
 
-      <p class="score" >Current score : <span id="curr-score"> 100 </span> </p>
-      <p class="score" >Best score : <span id="go-best-score"> 200 </span> </p>
+      <p class="score" >Current score : <span id="tot-score"> 100 </span> </p>
+      <p class="score" >Best score : <span id="best-score"> 200 </span> </p>
 
-      <button id="restart-button" type="button" class="flat-button primary-button">
+      <button id="restart-button" type="button" class="flat-button game-button">
         <img src="assets/images/play-circle.svg" alt="play">
         <span>Play again</span>
       </button>
@@ -49,12 +49,24 @@
   
         <div class="score-container">
   
-          <p id="curr-score" class="score" >Your score </p>
-          <p id="best-score" class="score" >Best score</p>
+          <p class="score" >Your score : <span id="gp-curr-score" >100</span> </p>
+          <p class="score" >Best score : <span id="gp-curr-score" >200</span></p>
     
         </div>
   
-        <button type="button" class="info-button"></button>
+        <div class="button-container">
+
+          <button id="about-button" type="button" class="button primary">
+            <img src="assets/images/information.svg" alt="info">
+            <span>About</span>
+          </button>
+
+          <button id="gc-restart-button" type="button" class="button primary">
+            <img src="assets/images/restart-line.svg" alt="restart">
+            <span>Restart</span>
+          </button>
+
+        </div>
   
       </div>
   
@@ -63,10 +75,6 @@
     </div>
 
   </main>
-
-  <div id="info" class="hidden">
-
-  </div>
 
   <script src="index.js"></script>
 </body>

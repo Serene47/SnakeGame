@@ -29,7 +29,7 @@ button {
   justify-content: center;
 }
 
-.flat-button {
+.flat-button, .button {
   background-color: transparent;
   border : none;
   outline: none;
@@ -37,11 +37,30 @@ button {
   transition: transform 200ms;
 }
 
-.flat-button:active {
+.button {
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+.flat-button,.button > * {
+  vertical-align: middle;
+}
+
+.flat-button:active,
+.button:active {
   transform: scale(0.95);
 }
 
-.primary-button {
+.flat-button.primary {
+  color: var(--primary);
+}
+
+.button.primary {
+  color: var(--primary);
+  border: 1px solid var(--stroke);
+}
+
+.game-button {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
@@ -49,7 +68,7 @@ button {
   color: var(--primary);
 }
 
-.primary-button  img{
+.game-button  img{
   width: 80px;
   margin-bottom: 6px;
 }
@@ -64,6 +83,7 @@ button {
 
 main {
   min-height: 100vh;
+  padding: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -109,11 +129,37 @@ main {
   margin-top: 50px;
 }
 
-.score-container .score:nth-last-child(n+2){
-  margin-bottom: 16px;
+#game-content .score-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
 }
 
+#game-content  .score-container .score {
+  padding-bottom: 12px;
+  border-bottom: 4px solid var(--primary);
+}
+
+#game-content .button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 36px;
+}
+
+#game-content .button-container .button img{
+  width: 24px;
+  margin-right: 8px;
+}
+
+#gc-restart-button {
+  margin-left: 50px;
+}
+
+
+/*.score-container .score{
+  margin-bottom: 36px;
+}*/
+
  #game-canvas {
-  background-color: #464d4d;
-  border: 4px solid #e4947c;
+  background-color: #eee; 
 }
