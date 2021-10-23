@@ -2,6 +2,8 @@
 :root {
   --primary : #85C170;
   --stroke : #555;
+  --icon : #AFB6BD;
+  --danger : #c17070;
 }
 
 *,*::after,*::before {
@@ -42,7 +44,7 @@ button {
   border-radius: 4px;
 }
 
-.flat-button,.button > * {
+:is(.flat-button,.button) > * {
   vertical-align: middle;
 }
 
@@ -162,4 +164,79 @@ main {
 
  #game-canvas {
   background-color: #eee; 
+}
+
+.dialog-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index : 10;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.dialog {
+  width: 90%;
+  padding: 50px;
+  position: absolute;
+  border-radius: 6px;
+  background-color: #fff;
+  color: var(--stroke);
+}
+
+.dialog .close {
+  position: absolute;
+  top: -16px;
+  right: -16px;
+  background-color: #fff;
+  border: 2px solid var(--danger);
+  border-radius: 50%;
+}
+
+.dialog .content .title {
+  font-size: 24px;
+  color: var(--primary);
+  margin-bottom: 50px;
+}
+
+#info .dialog {
+  max-width: 600px;
+}
+
+
+#info .dialog .content {
+  max-height: calc(80vh - 100px);
+  margin: 0 -24px;
+  padding: 0 24px;
+  overflow-y: auto;
+}
+
+#info .dialog .points {
+  list-style: none;
+  line-height: 2;
+  margin-bottom: 50px;
+}
+
+#info .dialog .points li {
+  margin-bottom: 24px;
+}
+
+#info .dialog .sub-title {
+  color: var(--primary); 
+}
+
+#info .dialog .key-info > * {
+  vertical-align: middle;
+}
+
+#info .dialog .key {
+  width: 24px;
+  height: 24px;
+  padding: 2px;
+  margin: 0 4px;
+  border-radius: 2px;
+  border: 1px solid var(--icon);
 }

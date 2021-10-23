@@ -1,6 +1,6 @@
 {
   "name": "snakegame",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "A very simple snake game",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -7,7 +7,7 @@ let boxSize = 30;
 let context;
 let snakePoints, moves, food;
 
-let startButton,startContent,gameOverContent,gameContent,restartButton;
+let startButton,startContent,gameOverContent,gameContent,restartButton,infoButton,infoDialog,infoCloseButton;
 
 let interval;
 
@@ -20,8 +20,15 @@ window.addEventListener("DOMContentLoaded", () => {
   startButton = document.getElementById("start-button");
   restartButton = document.getElementById("restart-button");
 
-  startButton.addEventListener('click', start)
-  restartButton.addEventListener('click', start)
+  infoButton = document.getElementById("info-button");
+  infoDialog = document.getElementById("info");
+  infoCloseButton = document.getElementById("info-close");
+
+  startButton.addEventListener('click', start);
+  restartButton.addEventListener('click', start);
+
+  infoButton.addEventListener('click', openInfo);
+  infoCloseButton.addEventListener('click', closeInfo)
 
   startContent = document.getElementById("start-content");
   gameContent = document.getElementById("game-content");
@@ -62,6 +69,18 @@ const start = () => {
   startGameInterval();
 
   document.body.addEventListener('keydown',handleKeyPress);
+
+}
+
+const pause = () => {
+
+  clearInterval(interval);
+
+}
+
+const resume = () => {
+
+  startGameInterval();
 
 }
 
@@ -243,7 +262,7 @@ const updateSnakePoints = () => {
 
 }
 
-doesContainFood = () => {
+const doesContainFood = () => {
 
   let head = snakePoints[0]
 
@@ -251,7 +270,7 @@ doesContainFood = () => {
 
 }
 
-addSnakePoint = () => {
+const addSnakePoint = () => {
 
   let tail = snakePoints[snakePoints.length - 1];
   let lastMove = moves[moves.length - 1];
@@ -395,5 +414,21 @@ const isCrossedBoundaries = () => {
 
   return head.v < 0 || head.v >= verticalBoxes 
   || head.h < 0 || head.h >= horizondalBoxes;
+
+}
+
+const openInfo = () => {
+
+  infoDialog.classList.remove("hidden");
+
+  pause();
+
+}
+
+const closeInfo = () => {
+
+  infoDialog.classList.add("hidden");
+
+  resume();
 
 }

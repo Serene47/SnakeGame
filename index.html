@@ -56,9 +56,9 @@
   
         <div class="button-container">
 
-          <button id="about-button" type="button" class="button primary">
+          <button id="info-button" type="button" class="button primary">
             <img src="assets/images/information.svg" alt="info">
-            <span>About</span>
+            <span>Info</span>
           </button>
 
           <button id="gc-restart-button" type="button" class="button primary">
@@ -75,6 +75,47 @@
     </div>
 
   </main>
+
+  <div id="info" class="dialog-wrapper hidden" >
+
+    <div class="dialog">
+
+      <button type="button" class="flat-button close" id="info-close">
+        <img src="assets/images/close.svg" alt="close">
+      </button>
+
+      <div class="content">
+
+        <h3 class="title" >Info</h3>
+
+        <ul class="points">
+          <li>A Snake Game is an action game that consists of a snake that is constantly moving inside a grid.</li> 
+          <li>The player controls the direction of the snake, but the snake always keeps moving.</li> 
+          <li>When the snake eats something, it grows in size.</li> 
+          <li>If the snake touches the boundaries of the grid, or if it tries to eat its own tail, the game is over. </li>
+          <li>The goal of the game is to keep the snake alive as long as possible.</li>
+          <li>
+            <b class="sub-title" >Play with keyboard : </b>
+            <span class="key-info">
+              Use keys 
+              <img class="key" src="assets/images/arrow-up.svg" alt="arrow up">
+              <img class="key" src="assets/images/arrow-right.svg" alt="arrow right">
+              <img class="key" src="assets/images/arrow-down.svg" alt="arrow down">
+              <img class="key" src="assets/images/arrow-left.svg" alt="arrow left">
+              to control direction of snake.
+            </span>
+          </li>
+        </ul>
+
+        <ul class="points">
+          <li></li>
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
 
   <script src="index.js"></script>
 </body>
