@@ -44,6 +44,11 @@ button {
   border-radius: 4px;
 }
 
+.button img {
+  width: 24px;
+  margin-right: 8px;
+}
+
 :is(.flat-button,.button) > * {
   vertical-align: middle;
 }
@@ -57,9 +62,15 @@ button {
   color: var(--primary);
 }
 
-.button.primary {
+.button.default {
   color: var(--primary);
   border: 1px solid var(--stroke);
+}
+
+.button.danger {
+  color: #fff;
+  background-color: var(--danger);
+  border: 1px solid var(--danger);
 }
 
 .game-button {
@@ -148,12 +159,7 @@ main {
   margin-bottom: 36px;
 }
 
-#game-content .button-container .button img{
-  width: 24px;
-  margin-right: 8px;
-}
-
-#gc-restart-button {
+#exit-button {
   margin-left: 50px;
 }
 
@@ -166,7 +172,7 @@ main {
   background-color: #eee; 
 }
 
-.dialog-wrapper {
+.dialog-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -187,7 +193,7 @@ main {
   color: var(--stroke);
 }
 
-.dialog .close {
+.dialog .close-button {
   position: absolute;
   top: -16px;
   right: -16px;
@@ -239,4 +245,18 @@ main {
   margin: 0 4px;
   border-radius: 2px;
   border: 1px solid var(--icon);
+}
+
+#exit-confirmation .dialog {
+  max-width: 480px;
+}
+
+#exit-confirmation .dialog .button-container {
+  margin-top: 50px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#exit-confirm-button {
+  margin-right: 50px;
 }

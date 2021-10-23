@@ -56,14 +56,14 @@
   
         <div class="button-container">
 
-          <button id="info-button" type="button" class="button primary">
+          <button id="info-button" type="button" class="button default">
             <img src="assets/images/information.svg" alt="info">
             <span>Info</span>
           </button>
 
-          <button id="gc-restart-button" type="button" class="button primary">
-            <img src="assets/images/restart-line.svg" alt="restart">
-            <span>Restart</span>
+          <button id="exit-button" type="button" class="button default">
+            <img src="assets/images/exit.svg" alt="exit">
+            <span>Exit</span>
           </button>
 
         </div>
@@ -76,12 +76,12 @@
 
   </main>
 
-  <div id="info" class="dialog-wrapper hidden" >
+  <div id="info" class="dialog-container hidden" >
 
     <div class="dialog">
 
-      <button type="button" class="flat-button close" id="info-close">
-        <img src="assets/images/close.svg" alt="close">
+      <button type="button" class="flat-button close-button" id="info-close">
+        <img src="assets/images/close-danger.svg" alt="close">
       </button>
 
       <div class="content">
@@ -110,6 +110,40 @@
         <ul class="points">
           <li></li>
         </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div id="exit-confirmation" class="dialog-container hidden">
+
+    <div class="dialog">
+
+      <button type="button" class="flat-button close-button" id="exit-close">
+        <img src="assets/images/close-danger.svg" alt="close">
+      </button>
+
+      <div class="content">
+
+        <h3 class="title">Exit game ? </h3>
+
+        <p>Are you sure want to exit game ?</p>
+
+        <div class="button-container">
+
+          <button id="exit-confirm-button" type="button" class="button danger">
+            <img src="assets/images/exit-white.svg" alt="exit">
+            <span>Exit</span>
+          </button>
+
+          <button id="exit-cancel-button" type="button" class="button default" >
+            <img src="assets/images/close.svg" alt="cancel">
+            <span>Cancel</span>
+          </button>
+
+        </div>
 
       </div>
 

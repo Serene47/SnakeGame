@@ -7,7 +7,9 @@ let boxSize = 30;
 let context;
 let snakePoints, moves, food;
 
-let startButton,startContent,gameOverContent,gameContent,restartButton,infoButton,infoDialog,infoCloseButton;
+let startButton,startContent,gameOverContent,gameContent,restartButton,
+  infoButton,infoDialog,infoCloseButton,
+  exitButton,exitConfirmDialog,exitConfirmButton,exitCancelButton,exitCloseButton;
 
 let interval;
 
@@ -15,7 +17,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   let gameCanvas = document.getElementById("game-canvas");
 
-  context = gameCanvas.getContext('2d');
+  context = gameCanvas.getContext("2d");
 
   startButton = document.getElementById("start-button");
   restartButton = document.getElementById("restart-button");
@@ -24,17 +26,28 @@ window.addEventListener("DOMContentLoaded", () => {
   infoDialog = document.getElementById("info");
   infoCloseButton = document.getElementById("info-close");
 
-  startButton.addEventListener('click', start);
-  restartButton.addEventListener('click', start);
+  exitButton = document.getElementById("exit-button");
+  exitConfirmDialog = document.getElementById("exit-confirmation");
+  exitConfirmButton = document.getElementById("exit-confirm-button");
+  exitCancelButton = document.getElementById("exit-cancel-button");
+  exitCloseButton = document.getElementById("exit-close");
 
-  infoButton.addEventListener('click', openInfo);
-  infoCloseButton.addEventListener('click', closeInfo)
+  startButton.addEventListener("click", start);
+  restartButton.addEventListener("click", start);
+
+  infoButton.addEventListener("click", openInfo);
+  infoCloseButton.addEventListener("click", closeInfo);
+
+  exitButton.addEventListener("click", showExitConfirmation);
+  exitConfirmButton.addEventListener("click", performExit );
+  exitCancelButton.addEventListener("click", closeExitConfirmation);
+  exitCloseButton.addEventListener("click", closeExitConfirmation)
 
   startContent = document.getElementById("start-content");
   gameContent = document.getElementById("game-content");
   gameOverContent = document.getElementById("game-over-content");
 
-  document.body.addEventListener('keydown',handleKeyPress);
+  document.body.addEventListener("keydown",handleKeyPress);
 
 })
 
@@ -68,7 +81,7 @@ const start = () => {
 
   startGameInterval();
 
-  document.body.addEventListener('keydown',handleKeyPress);
+  document.body.addEventListener("keydown",handleKeyPress);
 
 }
 
@@ -81,6 +94,15 @@ const pause = () => {
 const resume = () => {
 
   startGameInterval();
+
+}
+
+const exit = () => {
+
+  clearInterval(interval);
+
+  gameContent.classList.add("hidden");
+  startContent.classList.remove("hidden");
 
 }
 
@@ -308,7 +330,7 @@ const addSnakePoint = () => {
 
 const drawGrid = () => {
 
-  context.fillStyle = '#ddd';
+  context.fillStyle = "#ddd";
 
   for(let hdl=0;hdl<horizondalBoxes;hdl++) {
 
@@ -430,5 +452,29 @@ const closeInfo = () => {
   infoDialog.classList.add("hidden");
 
   resume();
+
+}
+
+const showExitConfirmation = () => {
+
+  exitConfirmDialog.classList.remove("hidden");
+
+  pause();
+
+}
+
+const closeExitConfirmation = () => {
+
+  exitConfirmDialog.classList.add("hidden");
+
+  resume();
+
+}
+
+const performExit = () => {
+
+  exitConfirmDialog.classList.add("hidden");
+
+  exit();
 
 }
