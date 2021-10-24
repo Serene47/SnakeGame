@@ -7,9 +7,14 @@ let boxSize = 30;
 let context;
 let snakePoints, moves, food;
 
+const scoreOffset = 1, bestScoreKey = "snake2021BestScore";
+
+let score = 0,bestScore = localStorage.getItem(bestScoreKey) || 0;
+
 let startButton,startContent,gameOverContent,gameContent,restartButton,
   infoButton,infoDialog,infoCloseButton,
-  exitButton,exitConfirmDialog,exitConfirmButton,exitCancelButton,exitCloseButton;
+  exitButton,exitConfirmDialog,exitConfirmButton,exitCancelButton,exitCloseButton,
+  startBest,gamePlayScore,gamePlayBest,gameOverScore,gameOverBest;
 
 let interval;
 
@@ -22,6 +27,10 @@ window.addEventListener("DOMContentLoaded", () => {
   startButton = document.getElementById("start-button");
   restartButton = document.getElementById("restart-button");
 
+  startContent = document.getElementById("start-content");
+  gameContent = document.getElementById("game-content");
+  gameOverContent = document.getElementById("game-over-content");
+
   infoButton = document.getElementById("info-button");
   infoDialog = document.getElementById("info");
   infoCloseButton = document.getElementById("info-close");
@@ -31,6 +40,16 @@ window.addEventListener("DOMContentLoaded", () => {
   exitConfirmButton = document.getElementById("exit-confirm-button");
   exitCancelButton = document.getElementById("exit-cancel-button");
   exitCloseButton = document.getElementById("exit-close");
+
+  startBest = document.getElementById("start-best");
+  gamePlayScore = document.getElementById("game-play-score");
+  gamePlayBest = document.getElementById("game-play-best");
+  gameOverScore = document.getElementById("game-over-score");
+  gameOverBest = document.getElementById("game-over-best");
+
+  startBest.innerText = 
+  gamePlayBest.innerText = 
+  gameOverBest.innerText = bestScore;
 
   startButton.addEventListener("click", start);
   restartButton.addEventListener("click", start);
@@ -42,10 +61,6 @@ window.addEventListener("DOMContentLoaded", () => {
   exitConfirmButton.addEventListener("click", performExit );
   exitCancelButton.addEventListener("click", closeExitConfirmation);
   exitCloseButton.addEventListener("click", closeExitConfirmation)
-
-  startContent = document.getElementById("start-content");
-  gameContent = document.getElementById("game-content");
-  gameOverContent = document.getElementById("game-over-content");
 
   document.body.addEventListener("keydown",handleKeyPress);
 
@@ -80,6 +95,10 @@ const start = () => {
   updateCanvas();
 
   startGameInterval();
+
+  score = 0;
+
+  updateCurrScore();
 
   document.body.addEventListener("keydown",handleKeyPress);
 
@@ -326,6 +345,10 @@ const addSnakePoint = () => {
 
   createFood();
 
+  score += scoreOffset;
+
+  updateScores();
+
 }
 
 const drawGrid = () => {
@@ -476,5 +499,35 @@ const performExit = () => {
   exitConfirmDialog.classList.add("hidden");
 
   exit();
+
+}
+
+const updateCurrScore = () => {
+
+  gamePlayScore.innerText = gameOverScore.innerText = score;
+
+}
+
+const updateBestScore = () => {
+
+  if(score > bestScore) {
+
+    bestScore = score;
+
+    startBest.innerText = 
+    gamePlayBest.innerText = 
+    gameOverBest.innerText = bestScore;
+
+    localStorage.setItem(bestScoreKey, bestScore);
+
+  }
+
+}
+
+const updateScores = () => {
+
+  updateCurrScore();
+
+  updateBestScore();
 
 }
