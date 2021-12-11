@@ -100,7 +100,7 @@ const start = () => {
 
   updateCurrScore();
 
-  document.body.addEventListener("keydown",handleKeyPress);
+  //document.body.addEventListener("keydown",handleKeyPress);
 
 }
 
